@@ -71,13 +71,13 @@ void Parse(string host)
 
 int main(int argc, char *argv[])
 {
-    if (argc < 2)
-    {
-        cerr << "You need to provide at least 1 parameter. Usage: logsplitter hostname" << endl;
-        return 2;
-    }
     Core::DebugLog("Logsplitter version 1.0");
     Writer::Load();
-    Parse(argv[1]);
+    char hostname[1024];
+    hostname[1023] = '\0';
+    gethostname(hostname, 1023);
+    string host(hostname);
+    Core::DebugLog("Hostname: " + host);
+    Parse(host);
     return 0;
 }
