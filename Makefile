@@ -15,7 +15,7 @@ INC =
 CFLAGS = -Wall -fexceptions
 RESINC = 
 LIBDIR = 
-LIB = 
+LIB = -lpthread
 LDFLAGS = 
 
 INC_DEBUG = $(INC)
@@ -23,7 +23,7 @@ CFLAGS_DEBUG = $(CFLAGS) -std=c++0x -g
 RESINC_DEBUG = $(RESINC)
 RCFLAGS_DEBUG = $(RCFLAGS)
 LIBDIR_DEBUG = $(LIBDIR)
-LIB_DEBUG = $(LIB)-llibpthread
+LIB_DEBUG = $(LIB)
 LDFLAGS_DEBUG = $(LDFLAGS)
 OBJDIR_DEBUG = obj/Debug
 DEP_DEBUG = 
