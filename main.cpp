@@ -31,8 +31,7 @@ void Parse(string host)
             text = text.substr(1);
         }
         string logfile;
-        //string user = "local-" + toolname;
-        string user = toolname;
+        string user = "local-" + toolname;
         string home = Configuration::DefaultProjectPath + "/" + toolname;
         string line = host + ": " + text;
         if (system(string("id " + user).c_str()) == 0)
