@@ -12,6 +12,8 @@ class Configuration
         static string DefaultGlobalPath;
         static string DefaultPublicPath;
         static int Verbosity;
+        static string OtherPath;
+        static string MissingPath;
     protected:
     private:
 };

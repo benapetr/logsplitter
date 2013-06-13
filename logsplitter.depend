@@ -1,23 +1,27 @@
 # depslib dependency file v1.0
-1371152214 source:/home/petanb/Documents/logsplitter/main.cpp
+1371158267 source:/home/petanb/Documents/logsplitter/main.cpp
 	<iostream>
 	"include/Writer.h"
 	"include/Core.h"
+	"include/Configuration.h"
+	<sys/stat.h>
+	<dirent.h>
 
 1371148490 source:/home/petanb/Documents/logsplitter/include/Configuration.h
 	<iostream>
 
-1371149262 source:/home/petanb/Documents/logsplitter/src/Configuration.cpp
+1371158328 source:/home/petanb/Documents/logsplitter/src/Configuration.cpp
 	"../include/Configuration.h"
 
-1371149223 /home/petanb/Documents/logsplitter/include/Configuration.h
+1371157859 /home/petanb/Documents/logsplitter/include/Configuration.h
 	<iostream>
 
-1371155005 source:/home/petanb/Documents/logsplitter/src/Writer.cpp
+1371155872 source:/home/petanb/Documents/logsplitter/src/Writer.cpp
 	"../include/Writer.h"
 	"../include/Core.h"
 	<iostream>
 	<list>
+	<fstream>
 	<mutex>
 	<pthread.h>
 
