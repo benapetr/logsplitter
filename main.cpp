@@ -47,24 +47,22 @@ string CleanUp(string line)
                  size_t last = line.rfind("/");
                  if (last != std::string::npos)
                  {
-                     return line.substr(0, position_of_next) + " HTTP" + line.substr(last);
+                     string x = line.substr(0, position_of_next) + " HTTP" + line.substr(last);
+                     if (x.substr(0, 15) == "tools-webserver")
+                     {
+                         return x;
+                     }
                  }
              }
-             Core::DebugLog("Doesn't contain +0000]");
-             return "";
           } 
-          Core::DebugLog("Doesn't contain HTTP/");
-          return "";
        }
-       Core::DebugLog("Invalid head: " + line.substr(0, 15));
-       return "";
     }
-    Core::DebugLog("Invalid length");
     return "";
 }
 
 void Parse(string host)
 {
+    cin.sync_with_stdio(false);
     while(cin)
     {
         string toolname;
