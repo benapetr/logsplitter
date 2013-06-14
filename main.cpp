@@ -107,7 +107,12 @@ void Parse(string host)
             }
             // write to global access
         }
-        Writer::Write(Configuration::DefaultPublicPath, CleanUp(line));
+	string cleaned_line = CleanUp(line);
+        Writer::Write(Configuration::DefaultPublicPath, cleaned_line);
+        if (cleaned_line.size() > 19)
+        {
+            Writer::Write(Configuration::DefaultPublicPath, CleanUp(line).substr(19));
+        }
         Writer::Write(Configuration::DefaultGlobalPath, line);
     }
 }
