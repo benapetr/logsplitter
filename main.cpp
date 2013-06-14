@@ -109,9 +109,9 @@ void Parse(string host)
         }
 	string cleaned_line = CleanUp(line);
         Writer::Write(Configuration::DefaultPublicPath, cleaned_line);
-        if (cleaned_line.size() > 19)
+        if (cleaned_line.size() > 20)
         {
-            Writer::Write(Configuration::DefaultPublicPath, CleanUp(line).substr(19));
+            Writer::Write(Configuration::DefaultPublicRawPath, CleanUp(line).substr(20));
         }
         Writer::Write(Configuration::DefaultGlobalPath, line);
     }
