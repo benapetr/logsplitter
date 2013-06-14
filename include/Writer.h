@@ -14,6 +14,7 @@ class Writer
     public:
         static void Load();
         static void Write(string file, string text);
+        static void Terminate();
         static bool isRunning;
     protected:
     private:
