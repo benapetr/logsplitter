@@ -21,6 +21,7 @@
 
 using namespace std;
 
+//! Initialise writer
 void Writer::Load()
 {
     int r = pthread_create(&Writer::thread, NULL, Writer::Exec, (void *)1);
@@ -31,6 +32,7 @@ void Writer::Load()
     }
 }
 
+//! This function is exec of thread of writer
 void *Writer::Exec(void *threadid)
 {
     while(Writer::isRunning)
@@ -49,10 +51,21 @@ void *Writer::Exec(void *threadid)
             {
                 Core::DebugLog( "Writing to " + iter->File );
             }
-            fstream filestr;
-            filestr.open (iter->File, fstream::in | fstream::out | fstream::app);
-            filestr << iter->Text <<endl;
-            filestr.close();
+            try
+            {
+                fstream filestr;
+                filestr.open (iter->File, fstream::in | fstream::out | fstream::app);
+                if (filestr.rdstate() & std::ifstream::failbit)
+                {
+                    Core::DebugLog("Error openning " + iter->File, 0);
+                    continue;
+                }
+                filestr << iter->Text <<endl;
+                filestr.close();
+            } catch (exception code)
+            {
+                Core::DebugLog("Unable to write to " + iter->File + " error: " + code.what(), 0);
+            }
         }
 
         sleep(2);
@@ -60,6 +73,7 @@ void *Writer::Exec(void *threadid)
     pthread_exit(NULL);
 }
 
+//! Called to stop the writer
 void Writer::Terminate()
 {
     Writer::isRunning = false;
@@ -83,6 +97,7 @@ void Writer::Terminate()
     return;
 }
 
+//! Write an item to disk
 void Writer::Write(string file, string text)
 {
     if (text == "")
@@ -96,6 +111,8 @@ void Writer::Write(string file, string text)
     DB.push_back(Item(file,text));
 }
 
+//! Database of objects that writer needs to write
 std::list<Item> Writer::DB;
+//! Whether writer is running
 bool Writer::isRunning = true;
 pthread_t Writer::thread;

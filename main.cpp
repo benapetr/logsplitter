@@ -54,7 +54,7 @@ string CleanUp(string line)
                      }
                  }
              }
-          } 
+          }
        }
     }
     return "";
@@ -119,8 +119,11 @@ void Parse(string host)
 
 int main(int argc, char *argv[])
 {
-    Configuration::Load(argc, argv);
-    Core::DebugLog("Logsplitter version 1.0");
+    if (Configuration::Load(argc, argv))
+    {
+        return 0;
+    }
+    Core::DebugLog("Logsplitter version 1.2");
     Writer::Load();
     char hostname[1024];
     hostname[1023] = '\0';

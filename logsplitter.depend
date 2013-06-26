@@ -1,47 +1,50 @@
 # depslib dependency file v1.0
-1371158703 source:/home/petanb/Documents/logsplitter/main.cpp
+1372232711 source:/home/petanb/Documents/logsplitter/main.cpp
 	<iostream>
+	<unistd.h>
+	<sys/stat.h>
+	<dirent.h>
 	"include/Writer.h"
 	"include/Core.h"
 	"include/Configuration.h"
-	<sys/stat.h>
-	<dirent.h>
 
 1371148490 source:/home/petanb/Documents/logsplitter/include/Configuration.h
 	<iostream>
 
-1371159772 source:/home/petanb/Documents/logsplitter/src/Configuration.cpp
+1372233028 source:/home/petanb/Documents/logsplitter/src/Configuration.cpp
 	"../include/Configuration.h"
 
-1371157859 /home/petanb/Documents/logsplitter/include/Configuration.h
+1372232669 /home/petanb/Documents/logsplitter/include/Configuration.h
 	<iostream>
 
-1371155872 source:/home/petanb/Documents/logsplitter/src/Writer.cpp
-	"../include/Writer.h"
-	"../include/Core.h"
+1372232232 source:/home/petanb/Documents/logsplitter/src/Writer.cpp
 	<iostream>
 	<list>
+	<unistd.h>
 	<fstream>
 	<mutex>
 	<pthread.h>
+	"../include/Writer.h"
+	"../include/Configuration.h"
+	"../include/Core.h"
 
-1371154876 /home/petanb/Documents/logsplitter/include/Writer.h
+1372231872 /home/petanb/Documents/logsplitter/include/Writer.h
 	<iostream>
 	<mutex>
 	<list>
 	<pthread.h>
 	"../include/Item.h"
 
-1371149482 source:/home/petanb/Documents/logsplitter/src/Core.cpp
+1372232094 source:/home/petanb/Documents/logsplitter/src/Core.cpp
 	"../include/Core.h"
 	"../include/Configuration.h"
 
-1371149442 /home/petanb/Documents/logsplitter/include/Core.h
+1372231872 /home/petanb/Documents/logsplitter/include/Core.h
 	<iostream>
 
-1371154355 /home/petanb/Documents/logsplitter/include/Item.h
+1372232130 /home/petanb/Documents/logsplitter/include/Item.h
 	<iostream>
 
-1371154277 source:/home/petanb/Documents/logsplitter/src/Item.cpp
+1372232145 source:/home/petanb/Documents/logsplitter/src/Item.cpp
 	"../include/Item.h"
 

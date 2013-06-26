@@ -11,9 +11,9 @@
 
 #include "../include/Item.h"
 
+//! Constructor
 Item::Item(string file, string text)
 {
-    //ctor
     this->File = file;
     this->Text = text;
 }

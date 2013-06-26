@@ -26,7 +26,8 @@ class Configuration
         static string OtherPath;
         static string MissingPath;
         static string DefaultPublicRawPath;
-        static void Load(int argc, char *argv[]);
+        static void PrintHelp();
+        static bool Load(int argc, char *argv[]);
     protected:
     private:
 };

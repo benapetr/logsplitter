@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//! Represen an item (1 line) which needs to be stored
 class Item
 {
     public:

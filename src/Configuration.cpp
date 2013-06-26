@@ -10,37 +10,63 @@
 
 #include "../include/Configuration.h"
 
+//! Verbosity
 int Configuration::Verbosity = 0;
+//! Root path
 string Configuration::DefaultProjectPath = "/data/project";
-string Configuration::DefaultPublicRawPath = "/data/project/.system/logs/public_apache2/global_access_raw.log";
-string Configuration::DefaultGlobalPath = "/data/project/.system/logs/apache2/global_access.log";
-string Configuration::DefaultPublicPath = "/data/project/.system/logs/public_apache2/global_access.log";
+//! Where the RAW (apache format) logs mixed from all hosts are being written to
+string Configuration::DefaultPublicRawPath = DefaultProjectPath + "/.system/logs/public_apache2/global_access_raw.log";
+//! Where the private global access logs are being written to
+string Configuration::DefaultGlobalPath = DefaultProjectPath + "/.system/logs/apache2/global_access.log";
+//! Place to store global access logs prefixed with name of server
+//! these logs don't contain the private info
+string Configuration::DefaultPublicPath = DefaultProjectPath + "/.system/logs/public_apache2/global_access.log";
+//! Missing tools
 string Configuration::MissingPath = "/var/log/apache2/lost.log";
+//! Unknown data
 string Configuration::OtherPath = "/var/log/apache2/access.log";
 
-void Configuration::Load(int argc, char *argv[])
+void Configuration::PrintHelp()
+{
+    cout << "Usage: logsplitter [hv]" << endl;
+    cout << endl;
+    cout << "This is a logsplitter service, which is parsing the logs from apache servers" << endl << endl;
+    cout << "Parameters:" << endl;
+    cout << "    -v: Increase verbosity" << endl;
+    cout << "    -h (--help): Display help" << endl;
+}
+
+//! Read all the configuration
+bool Configuration::Load(int argc, char *argv[])
 {
     int current = 0;
     while (current < argc)
     {
         string parameter(argv[current]);
-        if (parameter.size() >= 2)
+        if (parameter == "--help" || parameter == "-h")
         {
-            if (parameter.substr(0, 2) == "-v")
+            PrintHelp();
+            return true;
+        }
+        if (parameter.size() > 1 && parameter.substr(0, 1) == "-")
+        {
+            unsigned int c = 1;
+            while (c < parameter.size())
             {
-                Configuration::Verbosity++;
-                unsigned int x = 2;
-                while (x < parameter.size())
+                // verbose
+                if ( parameter[c] == 'v' )
                 {
-                    if (parameter[x] != 'v')
-                    {
-                        break;
-                    }
                     Configuration::Verbosity++;
-                    x++;
                 }
+                // help
+                if ( parameter[c] == 'h' )
+                {
+                    PrintHelp();
+                }
+                c++;
             }
         }
         current++;
     }
+    return false;
 }
